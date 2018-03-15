@@ -10,26 +10,25 @@
         <script type="text/javascript" src="list-ctrl.js"></script>
     </head>
     <body ng-controller="ListCtrl">
-        <h1>Contacts</h1>
-        <table class="table">
-            <thead>
+        <form name="myForm">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>&nbsp;</th>
-
+                    <td><input class="form-control" ng-model="newContact.name" type="text"/></td>
+                    <td><input ng-class="{'is-invalid': !myForm.phone.$valid}" class="form-control" ng-model="newContact.phone" name="phone" required ng-pattern="/^[0-9]+$/" type="text"/></td>
+                    <td><button class="btn btn-primary" ng-disabled="!myForm.phone.$valid"ng-click="addContact()">Add Contact</button></td>
                 </tr>
-            </thead>
-            <tr>
-                <td><input class="form-control" ng-model="newContact.name" type="text"/></td>
-                <td><input class="form-control" ng-model="newContact.phone" type="text"/></td>
-                <td><button class="btn btn-primary" ng-click="addContact()">Add Contact</button></td>
-
-            </tr>
-            <tr ng-repeat="contact in contacts">
-                <td>{{contact.name}}</td>
-                <td>{{contact.phone}}</td>
-            </tr>
-        </table>
+                <tr ng-repeat="contact in contacts">
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.phone}}</td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>
