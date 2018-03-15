@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var DataStore = require("nedb");
@@ -187,7 +189,7 @@ app.get("/", (req, res) => {
 });
 */
 
-app.use("/", express.static(__dirname+"/public"))
+app.use("/", express.static(__dirname+"/public"));
 app.listen(process.env.PORT);
 
 console.log("Server ready!");
